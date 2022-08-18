@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Channel", "src\Abp.StrainerPipe.Channel\Abp.StrainerPipe.Channel.csproj", "{0F2D2538-1BBD-4950-A629-E5B43FAB03D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Source", "src\Abp.StrainerPipe.Source\Abp.StrainerPipe.Source.csproj", "{5248E62E-F26D-4988-AAD6-EF6D43AF6EDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Sink", "src\Abp.StrainerPipe.Sink\Abp.StrainerPipe.Sink.csproj", "{B1046EE1-8349-4B9D-9B95-F78F9E878D44}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F2D2538-1BBD-4950-A629-E5B43FAB03D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F2D2538-1BBD-4950-A629-E5B43FAB03D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F2D2538-1BBD-4950-A629-E5B43FAB03D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F2D2538-1BBD-4950-A629-E5B43FAB03D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5248E62E-F26D-4988-AAD6-EF6D43AF6EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5248E62E-F26D-4988-AAD6-EF6D43AF6EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5248E62E-F26D-4988-AAD6-EF6D43AF6EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5248E62E-F26D-4988-AAD6-EF6D43AF6EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1046EE1-8349-4B9D-9B95-F78F9E878D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1046EE1-8349-4B9D-9B95-F78F9E878D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1046EE1-8349-4B9D-9B95-F78F9E878D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1046EE1-8349-4B9D-9B95-F78F9E878D44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
