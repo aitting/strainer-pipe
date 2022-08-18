@@ -2,7 +2,7 @@
 
 namespace Abp.StrainerPipe.Channel
 {
-    public class AbpStrainerPipeChannelModule: AbpModule
+    public class AbpStrainerPipeChannelModule : AbpModule
     {
 
     }
