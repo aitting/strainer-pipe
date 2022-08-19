@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Source", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Sink", "src\Abp.StrainerPipe.Sink\Abp.StrainerPipe.Sink.csproj", "{B1046EE1-8349-4B9D-9B95-F78F9E878D44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Core", "src\Abp.StrainerPipe.Core\Abp.StrainerPipe.Core.csproj", "{149E4B6F-7471-4A48-B1C1-877738536588}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B1046EE1-8349-4B9D-9B95-F78F9E878D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1046EE1-8349-4B9D-9B95-F78F9E878D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1046EE1-8349-4B9D-9B95-F78F9E878D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{149E4B6F-7471-4A48-B1C1-877738536588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{149E4B6F-7471-4A48-B1C1-877738536588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{149E4B6F-7471-4A48-B1C1-877738536588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{149E4B6F-7471-4A48-B1C1-877738536588}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
