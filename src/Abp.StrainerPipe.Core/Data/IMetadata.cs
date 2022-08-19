@@ -7,5 +7,9 @@ namespace Abp.StrainerPipe.Data
     public interface IMetadata<T>
     {
         T Value { get; }
+
+        string Serialize();
+
+        T Deserialize(string value);
     }
 }

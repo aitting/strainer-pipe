@@ -7,6 +7,17 @@ namespace Abp.StrainerPipe.Data
 {
     public class BlobMetadata : Metadata<byte[]>
     {
-         
+
+        public override string Serialize()
+        {
+            return System.Text.Encoding.UTF8.GetString(Value);
+        }
+
+
+        public override byte[] Deserialize(string value)
+        {
+
+            return System.Text.Encoding.UTF8.GetBytes(value);
+        }
     }
 }

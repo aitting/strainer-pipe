@@ -15,6 +15,19 @@ namespace Abp.StrainerPipe.Data
         public StringMetadata(string value)
         {
             Value = value;
-        } 
+        }
+
+
+        public override string Serialize()
+        {
+            return Value;
+        }
+
+
+        public override string Deserialize(string value)
+        {
+
+            return value;
+        }
     }
 }
