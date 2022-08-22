@@ -1,4 +1,8 @@
-﻿namespace Abp.StrainerPipe
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Text;
+
+namespace Abp.StrainerPipe
 {
     public class MqttMessageDto
     {
@@ -16,5 +20,14 @@
         public string Topic { get; set; }
 
 
+    }
+
+    public static class MqttMessageDtoExtensions
+    {
+
+        public static byte[] GetBytes(this MqttMessageDto dto)
+        {
+            return System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(dto));
+        }
     }
 }

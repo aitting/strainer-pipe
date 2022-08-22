@@ -1,11 +1,11 @@
-﻿using Volo.Abp.Modularity;
+﻿using Abp.StrainerPipe.Transfer;
+using Volo.Abp.Modularity;
 
 namespace Abp.StrainerPipe
 {
 
     [DependsOn(
-        typeof(AbpStrainerPipeCoreModule),
-        typeof(AbpStrainerPipeChannelModule)
+        typeof(AbpStrainerPipeChannelTransferModule)
         )]
     public class AbpStrainerPipeSourceModule : AbpModule
     {

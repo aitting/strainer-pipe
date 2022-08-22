@@ -1,4 +1,6 @@
-﻿using Volo.Abp.DependencyInjection;
+﻿using Abp.StrainerPipe.Data;
+using Abp.StrainerPipe.Transfer;
+using Volo.Abp.DependencyInjection;
 using Volo.Abp.Threading;
 
 namespace Abp.StrainerPipe.MqttNetServer
@@ -9,6 +11,8 @@ namespace Abp.StrainerPipe.MqttNetServer
         private readonly IMqttMessageManager _mqttMessageManager;
 
         protected AbpAsyncTimer Timer { get; set; }
+
+        protected IChannelTransfer ChannelTransfer => LazyServiceProvider.LazyGetRequiredService<IChannelTransfer>();
 
         public MqttNetServerSource(
             IAbpLazyServiceProvider abpLazyServiceProvider,
@@ -29,7 +33,13 @@ namespace Abp.StrainerPipe.MqttNetServer
         private async Task Runner(AbpAsyncTimer timer)
         {
             var data = await _mqttMessageManager.TakeAsync();
-            // TODO: 将数据写入到channel
+            foreach (var item in data)
+            {
+                if (item != null)
+                {
+                    await ChannelTransfer.PutAsync(new BlobMetadata(item.GetBytes()));
+                }
+            }
         }
 
         public override async Task StartAsync()
