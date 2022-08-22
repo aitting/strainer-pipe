@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Channel", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Source", "src\Abp.StrainerPipe.Source\Abp.StrainerPipe.Source.csproj", "{5248E62E-F26D-4988-AAD6-EF6D43AF6EDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Sink", "src\Abp.StrainerPipe.Sink\Abp.StrainerPipe.Sink.csproj", "{B1046EE1-8349-4B9D-9B95-F78F9E878D44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Sink", "src\Abp.StrainerPipe.Sink\Abp.StrainerPipe.Sink.csproj", "{B1046EE1-8349-4B9D-9B95-F78F9E878D44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Core", "src\Abp.StrainerPipe.Core\Abp.StrainerPipe.Core.csproj", "{149E4B6F-7471-4A48-B1C1-877738536588}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Core", "src\Abp.StrainerPipe.Core\Abp.StrainerPipe.Core.csproj", "{149E4B6F-7471-4A48-B1C1-877738536588}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F463F166-4D15-42C4-A8B3-1CA313F0CE66}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{34CD2395-C1BF-4478-830F-5A4CAE9B40FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0F2D2538-1BBD-4950-A629-E5B43FAB03D8} = {34CD2395-C1BF-4478-830F-5A4CAE9B40FA}
+		{5248E62E-F26D-4988-AAD6-EF6D43AF6EDD} = {34CD2395-C1BF-4478-830F-5A4CAE9B40FA}
+		{B1046EE1-8349-4B9D-9B95-F78F9E878D44} = {34CD2395-C1BF-4478-830F-5A4CAE9B40FA}
+		{149E4B6F-7471-4A48-B1C1-877738536588} = {34CD2395-C1BF-4478-830F-5A4CAE9B40FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE8755CC-FB81-48E1-A5DB-6EFF83CAFC99}

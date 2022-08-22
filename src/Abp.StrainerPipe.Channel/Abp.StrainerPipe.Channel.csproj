@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+	<Import Project="..\..\common.props" />
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -8,7 +9,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Volo.Abp.Caching" Version="5.3.3" />
 		<PackageReference Include="Volo.Abp.Core" Version="5.3.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Abp.StrainerPipe.Core\Abp.StrainerPipe.Core.csproj" />
 	</ItemGroup>
 
 </Project>

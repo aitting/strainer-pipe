@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Abp.StrainerPipe.Data;
+using System;
 using Volo.Abp.Json;
 using Volo.Abp.Modularity;
 
@@ -13,5 +14,13 @@ namespace Abp.StrainerPipe
     public class AbpStrainerPipeCoreModule : AbpModule
     {
 
+        public override void ConfigureServices(ServiceConfigurationContext context)
+        {
+            Configure<MetadataOptions>(options =>
+            {
+                options.AddMetadataType<string, StringMetadata>();
+                options.AddMetadataType<byte[], BlobMetadata>();
+            });
+        }
     }
 }
