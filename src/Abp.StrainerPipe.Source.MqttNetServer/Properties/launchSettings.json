@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Abp.StrainerPipe.Source.MqttNetServer": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:53836;http://localhost:53837"
+    }
+  }
+}

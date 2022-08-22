@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Channel.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.TestBase", "test\Abp.StrainerPipe.TestBase\Abp.StrainerPipe.TestBase.csproj", "{A3194E7E-B9EA-42FB-A0CA-9634F8031F72}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Source.MqttNetServer", "src\Abp.StrainerPipe.Source.MqttNetServer\Abp.StrainerPipe.Source.MqttNetServer.csproj", "{02456797-2EAA-4EDE-9488-E262F7C5E80B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{A3194E7E-B9EA-42FB-A0CA-9634F8031F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3194E7E-B9EA-42FB-A0CA-9634F8031F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3194E7E-B9EA-42FB-A0CA-9634F8031F72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02456797-2EAA-4EDE-9488-E262F7C5E80B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02456797-2EAA-4EDE-9488-E262F7C5E80B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02456797-2EAA-4EDE-9488-E262F7C5E80B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02456797-2EAA-4EDE-9488-E262F7C5E80B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{149E4B6F-7471-4A48-B1C1-877738536588} = {34CD2395-C1BF-4478-830F-5A4CAE9B40FA}
 		{4841A976-3879-44CA-B6AA-F9A925B70F1B} = {F463F166-4D15-42C4-A8B3-1CA313F0CE66}
 		{A3194E7E-B9EA-42FB-A0CA-9634F8031F72} = {F463F166-4D15-42C4-A8B3-1CA313F0CE66}
+		{02456797-2EAA-4EDE-9488-E262F7C5E80B} = {34CD2395-C1BF-4478-830F-5A4CAE9B40FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE8755CC-FB81-48E1-A5DB-6EFF83CAFC99}

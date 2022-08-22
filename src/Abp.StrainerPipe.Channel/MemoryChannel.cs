@@ -19,15 +19,12 @@ namespace Abp.StrainerPipe
 
         protected IMetadataConverter MetadataConverter { get; }
 
-        protected ChannelOptions Options { get; set; }
-
         public MemoryChannel(
+            IAbpLazyServiceProvider abpLazyServiceProvider,
             IOptions<ChannelOptions> options,
-            IMetadataConverter metadataConverter)
+            IMetadataConverter metadataConverter) : base(options, abpLazyServiceProvider)
         {
             Queue = new BlockingCollection<T>(new ConcurrentQueue<T>());
-            Options = options.Value;
-
             MetadataConverter = metadataConverter;
         }
 
