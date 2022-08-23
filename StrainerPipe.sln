@@ -15,13 +15,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F463F166-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{34CD2395-C1BF-4478-830F-5A4CAE9B40FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Channel.Tests", "test\Abp.StrainerPipe.Channel.Tests\Abp.StrainerPipe.Channel.Tests.csproj", "{4841A976-3879-44CA-B6AA-F9A925B70F1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Channel.Tests", "test\Abp.StrainerPipe.Channel.Tests\Abp.StrainerPipe.Channel.Tests.csproj", "{4841A976-3879-44CA-B6AA-F9A925B70F1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.TestBase", "test\Abp.StrainerPipe.TestBase\Abp.StrainerPipe.TestBase.csproj", "{A3194E7E-B9EA-42FB-A0CA-9634F8031F72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.TestBase", "test\Abp.StrainerPipe.TestBase\Abp.StrainerPipe.TestBase.csproj", "{A3194E7E-B9EA-42FB-A0CA-9634F8031F72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Source.MqttNetServer", "src\Abp.StrainerPipe.Source.MqttNetServer\Abp.StrainerPipe.Source.MqttNetServer.csproj", "{02456797-2EAA-4EDE-9488-E262F7C5E80B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Source.MqttNetServer", "src\Abp.StrainerPipe.Source.MqttNetServer\Abp.StrainerPipe.Source.MqttNetServer.csproj", "{02456797-2EAA-4EDE-9488-E262F7C5E80B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Channel.Transfer", "src\Abp.StrainerPipe.Channel.Transfer\Abp.StrainerPipe.Channel.Transfer.csproj", "{CE18A1AC-8C7C-4949-BDE0-9A95E6EA8122}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Channel.Transfer", "src\Abp.StrainerPipe.Channel.Transfer\Abp.StrainerPipe.Channel.Transfer.csproj", "{CE18A1AC-8C7C-4949-BDE0-9A95E6EA8122}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{AACA915F-B068-41D1-BB95-B8BE1B9EF8DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Source.Host", "host\Abp.StrainerPipe.Source.Host\Abp.StrainerPipe.Source.Host.csproj", "{8043F225-0060-4AE6-82E5-2384F7F8E0FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,10 @@ Global
 		{CE18A1AC-8C7C-4949-BDE0-9A95E6EA8122}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE18A1AC-8C7C-4949-BDE0-9A95E6EA8122}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE18A1AC-8C7C-4949-BDE0-9A95E6EA8122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8043F225-0060-4AE6-82E5-2384F7F8E0FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8043F225-0060-4AE6-82E5-2384F7F8E0FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8043F225-0060-4AE6-82E5-2384F7F8E0FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8043F225-0060-4AE6-82E5-2384F7F8E0FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +82,7 @@ Global
 		{A3194E7E-B9EA-42FB-A0CA-9634F8031F72} = {F463F166-4D15-42C4-A8B3-1CA313F0CE66}
 		{02456797-2EAA-4EDE-9488-E262F7C5E80B} = {34CD2395-C1BF-4478-830F-5A4CAE9B40FA}
 		{CE18A1AC-8C7C-4949-BDE0-9A95E6EA8122} = {34CD2395-C1BF-4478-830F-5A4CAE9B40FA}
+		{8043F225-0060-4AE6-82E5-2384F7F8E0FA} = {AACA915F-B068-41D1-BB95-B8BE1B9EF8DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE8755CC-FB81-48E1-A5DB-6EFF83CAFC99}
