@@ -7,14 +7,10 @@ namespace Abp.StrainerPipe.Data
     public class StringMetadata : Metadata<string>
     {
 
-        public StringMetadata()
-        {
-            Value = string.Empty;
-        }
 
-        public StringMetadata(string value)
+        public StringMetadata(string value) : base(value)
         {
-            Value = value;
+            
         }
 
 
@@ -29,5 +25,7 @@ namespace Abp.StrainerPipe.Data
 
             return value;
         }
+
+
     }
 }

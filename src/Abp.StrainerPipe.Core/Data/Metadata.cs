@@ -1,22 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using JetBrains.Annotations;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Abp.StrainerPipe.Data
 {
-    public abstract class Metadata<T> : IMetadata<T>
+    public abstract class Metadata<T> : IMetadata<T> where T : notnull
     {
         public T Value { get; set; }
 
-        public Metadata()
-        {
-#pragma warning disable CS8601 // 引用类型赋值可能为 null。
-            Value = default;
-#pragma warning restore CS8601 // 引用类型赋值可能为 null。
-        }
-
-        public Metadata(T value)
+        public Metadata([NotNull] T value)
         {
             Value = value;
         }
@@ -26,9 +20,15 @@ namespace Abp.StrainerPipe.Data
             return JsonConvert.SerializeObject(Value, Formatting.Indented);
         }
 
-        public virtual T Deserialize(string value)
+        public virtual T Deserialize([NotNull] string value)
         {
-            return JsonConvert.DeserializeObject<T>(value);
+            return value.IsNullOrEmpty() ? default(T) : JsonConvert.DeserializeObject<T>(value);
+        }
+
+        public IMetadata<object> ToObject()
+        {
+
+            return new ObjectMetadata(Value);
         }
     }
 }

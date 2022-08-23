@@ -55,7 +55,7 @@ namespace Abp.StrainerPipe
 
         public override async Task<IEnumerable<IMetadata<T>>> TakeAsync(int count = 1)
         {
-
+            
             return await Task.FromResult(
                 Queue.Take(count).Select(x =>
                     MetadataConverter.Convert(x)

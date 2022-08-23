@@ -8,14 +8,10 @@ namespace Abp.StrainerPipe.Data
     public class BlobMetadata : Metadata<byte[]>
     {
 
-        public BlobMetadata()
+        
+        public BlobMetadata(byte[] value):base(value)
         {
-
-        }
-
-        public BlobMetadata(byte[] value)
-        {
-            Value = value;
+             
         }
 
         public override string Serialize()
