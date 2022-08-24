@@ -16,9 +16,9 @@ namespace Abp.StrainerPipe.MqttNetServer
         }
 
 
-        public async Task HandleEventAsync(MqttMessageDto eventData)
+        public override async Task HandleEventAsync(EventBusSourceData<MqttMessageDto> eventData)
         {
-            await ChannelTransfer.PutAsync(new BlobMetadata(eventData.GetBytes()));
+            await ChannelTransfer.PutAsync(new BlobMetadata(eventData.Data.GetBytes()));
         }
     }
 }

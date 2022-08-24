@@ -1,4 +1,6 @@
 ﻿using Hd.Mqtt;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using MQTTnet;
 using Volo.Abp.DependencyInjection;
 
@@ -9,10 +11,11 @@ namespace Abp.StrainerPipe.MqttNetServer
     {
 
         private readonly IMqttMessageManager _mqttMessageManager;
-
+        public ILogger<MqttMessageHandler> Logger { get; set; }
 
         public MqttMessageHandler(IMqttMessageManager mqttMessageManager)
         {
+            Logger = NullLogger<MqttMessageHandler>.Instance;
             _mqttMessageManager = mqttMessageManager;
         }
 
@@ -24,7 +27,7 @@ namespace Abp.StrainerPipe.MqttNetServer
 
         public virtual async Task HandleAsync(string topic, string message)
         {
-
+            Logger.LogDebug(topic + " | " + message);
             await _mqttMessageManager.PutAsync(topic, message);
         }
     }

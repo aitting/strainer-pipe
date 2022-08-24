@@ -9,8 +9,8 @@ namespace Abp.StrainerPipe.Transfer
     public interface IChannelTransfer : ITransientDependency
     {
 
-        Task PutAsync<T>(IMetadata<T> data);
+        Task PutAsync<T>(IMetadata<T> data) where T : notnull;
 
-        Task<IEnumerable<IMetadata<T>>> TakeAsync<T>(int count = 1);
+        Task<IEnumerable<IMetadata<T>>> TakeAsync<T>(int count = 1) where T : notnull;
     }
 }

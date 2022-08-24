@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using Volo.Abp.EventBus;
+using Volo.Abp.EventBus.Local;
 using Volo.Abp.Guids;
 using Volo.Abp.Threading;
 
@@ -16,10 +17,10 @@ namespace Abp.StrainerPipe
 
         private bool _started = false;
 
-        protected IEventBus EventBus { get; }
+        protected ILocalEventBus EventBus { get; }
 
         public MqttMessageManager(IGuidGenerator guidGenerator,
-            IEventBus eventBus)
+            ILocalEventBus eventBus)
         {
             GuidGenerator = guidGenerator;
             EventBus = eventBus;
@@ -34,7 +35,7 @@ namespace Abp.StrainerPipe
             while (_started && !Queue.IsCompleted)
             {
                 var message = Queue.Take();
-                AsyncHelper.RunSync(() => EventBus.PublishAsync(message));
+                AsyncHelper.RunSync(() => EventBus.PublishAsync(new EventBusSourceData<MqttMessageDto>(message)));
             }
         }
 

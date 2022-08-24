@@ -15,12 +15,24 @@ namespace Abp.StrainerPipe.Transfer
             _channelManager = channelManager;
         }
 
-        public virtual async Task PutAsync<T>(IMetadata<T> data)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public virtual async Task PutAsync<T>(IMetadata<T> data) where T : notnull
         {
             await _channelManager.PutAsync(data);
         }
 
-        public virtual async Task<IEnumerable<IMetadata<T>>> TakeAsync<T>(int count = 1)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public virtual async Task<IEnumerable<IMetadata<T>>> TakeAsync<T>(int count = 1) where T : notnull
         {
             return await _channelManager.TakeAsync<T>(count);
         }

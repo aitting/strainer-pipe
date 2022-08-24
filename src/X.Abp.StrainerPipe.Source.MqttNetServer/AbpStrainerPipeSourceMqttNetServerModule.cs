@@ -11,7 +11,7 @@ namespace Abp.StrainerPipe.MqttNetServer
         typeof(AbpGuidsModule),
         
         typeof(AbpStrainerPipeSourceModule),
-        typeof(Hd.Mqtt.HdMqttModule)
+        typeof(HdMqttModule)
         )]
     public class AbpStrainerPipeSourceMqttNetServerModule : AbpModule
     {

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+
+	<Import Project="..\..\common.props" />
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..</DockerfileContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+		<PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+		<PackageReference Include="Volo.Abp.Autofac" Version="5.3.3" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="5.3.3" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="5.3.3" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="5.3.3" />
+		<PackageReference Include="Volo.Abp.Swashbuckle" Version="5.3.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\X.Abp.StrainerPipe.Sink\X.Abp.StrainerPipe.Sink.csproj" />
+	  <ProjectReference Include="..\..\src\X.Abp.StrainerPipe.Source.MqttNetServer\X.Abp.StrainerPipe.Source.MqttNetServer.csproj" />
+	</ItemGroup>
+
+</Project>

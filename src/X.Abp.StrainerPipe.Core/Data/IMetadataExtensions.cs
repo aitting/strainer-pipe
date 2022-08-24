@@ -7,6 +7,16 @@ namespace Abp.StrainerPipe.Data
 {
     public static class IMetadataExtensions
     {
+        public static bool IsStringData(this IMetadata<object> metadata)
+        {
+            return metadata.Value.GetType() == typeof(string);
+        }
+
+        public static bool IsBlobData(this IMetadata<object> metadata)
+        {
+            return metadata.Value.GetType() == typeof(byte[]);
+        }
+
         public static StringMetadata ToStringData(this IMetadata<object> metadata)
         {
             return new StringMetadata(metadata.Serialize());

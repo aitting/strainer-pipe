@@ -22,12 +22,12 @@ namespace Abp.StrainerPipe
             {
                 if (ctx.ImplementationType.IsAssignableTo(typeof(Sink)))
                 {
-                    sinks.Add(ctx.ImplementationType);
+                    sinks.AddIfNotContains(ctx.ImplementationType);
                 }
 
                 if (ctx.ImplementationType.IsAssignableTo(typeof(DataTaker)))
                 {
-                    dataTakers.Add(ctx.ImplementationType);
+                    dataTakers.AddIfNotContains(ctx.ImplementationType);
                 }
             });
 

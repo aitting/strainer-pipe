@@ -1,13 +1,11 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
-using X.Abp.StrainerPipe.Source.Host;
 
-namespace Zhh.BeiJinDa;
+namespace X.Abp.StrainerPipe.MqttClient;
 
 public class Program
 {
@@ -20,25 +18,23 @@ public class Program
             .MinimumLevel.Information()
 #endif
             .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
             .Enrich.FromLogContext()
-            .WriteTo.Async(c => c.File("Logs/.txt", rollingInterval: RollingInterval.Day, fileSizeLimitBytes: 1024 * 1024 * 5, rollOnFileSizeLimit: true))
-#if DEBUG
+            .WriteTo.Async(c => c.File("Logs/logs.txt"))
             .WriteTo.Async(c => c.Console())
-#endif
             .CreateLogger();
 
         try
         {
-            Log.Information("Starting Zhh.BeiJinDa.HttpApi.Host.");
-            var builder = WebApplication.CreateBuilder(args);
-            builder.Host.AddAppSettingsSecretsJson()
-                .UseAutofac()
-                .UseSerilog();
-            await builder.AddApplicationAsync<AbpStrainerPipeHostModule>();
-            var app = builder.Build();
-            await app.InitializeApplicationAsync();
-            await app.RunAsync();
+            Log.Information("Starting console host.");
+
+            await Host.CreateDefaultBuilder(args)
+                .ConfigureServices(services =>
+                {
+                    services.AddHostedService<MqttClientHostedService>();
+                })
+                .UseSerilog()
+                .RunConsoleAsync();
+
             return 0;
         }
         catch (Exception ex)
