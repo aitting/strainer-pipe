@@ -8,7 +8,7 @@ namespace Abp.StrainerPipe
     public interface ISink : IDisposable
     {
 
-        Task ProcessAsync<T>(IMetadata<T> data);
+        Task<ObjectMetadata> ProcessAsync(ObjectMetadata data);
 
         int Sort { get; }
     }

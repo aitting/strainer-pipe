@@ -4,17 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Guids;
 
 namespace Abp.StrainerPipe
 {
     public abstract class Sink : ISink
     {
 
+        public string Id { get; set; }
+
         public ILogger<Sink> Logger => LazyServiceProvider.LazyGetRequiredService<ILogger<Sink>>();
 
         protected Sink(IAbpLazyServiceProvider lazyServiceProvider)
         {
             LazyServiceProvider = lazyServiceProvider;
+            Id = lazyServiceProvider.LazyGetRequiredService<IGuidGenerator>().Create().ToString("N");
         }
 
         public IAbpLazyServiceProvider LazyServiceProvider { get; private set; }
@@ -26,11 +30,7 @@ namespace Abp.StrainerPipe
 
         }
 
-        public abstract Task<IMetadata<object>> ProcessAsync(IMetadata<object> data);
+        public abstract Task<ObjectMetadata> ProcessAsync(ObjectMetadata data);
 
-        public Task ProcessAsync<T>(IMetadata<T> data)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

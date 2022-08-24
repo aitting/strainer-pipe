@@ -14,7 +14,7 @@ namespace Abp.StrainerPipe
         }
                
 
-        public override Task<IMetadata<object>> ProcessAsync(IMetadata<object> data)
+        public override Task<ObjectMetadata> ProcessAsync(ObjectMetadata data)
         {
             Logger.LogInformation("NullSink Process ...");
             Logger.LogInformation(data.Serialize());

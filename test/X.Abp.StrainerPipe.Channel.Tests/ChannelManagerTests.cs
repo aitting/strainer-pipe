@@ -37,8 +37,11 @@ namespace Abp.StrainerPipe.Channel.Tests
             await _channelManager.PutAsync(new StringMetadata("我是一条数据:9"));
             await _channelManager.PutAsync(new StringMetadata("我是一条数据:10"));
 
-            var strDataList = await _channelManager.TakeAsync<string>(10);
+            var strDataList = await _channelManager.TakeAsync<string>(200);
             strDataList.Count().ShouldBe(10);
+
+            var strDataList2 = await _channelManager.TakeAsync<string>(100);
+            strDataList2.Count().ShouldBe(0);
 
             strDataList.First().Value.ShouldBe("我是一条数据:1");
             strDataList.Last().Value.ShouldBe("我是一条数据:10");

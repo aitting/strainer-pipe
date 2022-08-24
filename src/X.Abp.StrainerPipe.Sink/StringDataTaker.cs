@@ -20,11 +20,11 @@ namespace Abp.StrainerPipe
             return await ChannelTransfer.TakeAsync<string>(count);
         }
 
-        public override async Task<IEnumerable<IMetadata<object>>> TakeObjectAsync(int count = 1)
+        public override async Task<IEnumerable<ObjectMetadata>> TakeObjectAsync(int count = 1)
         {
             var data = await TakeAsync(count);
 
-            return data.Select(x => x.ToObject()).ToList();
+            return data.Select(x => (ObjectMetadata)x.ToObject()).ToList();
         }
     }
 }

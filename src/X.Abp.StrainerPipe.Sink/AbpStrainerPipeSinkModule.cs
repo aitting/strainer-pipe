@@ -1,12 +1,14 @@
 ﻿using Abp.StrainerPipe.Transfer;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Volo.Abp.Guids;
 using Volo.Abp.Modularity;
 
 namespace Abp.StrainerPipe
 {
 
     [DependsOn(
+        typeof(AbpGuidsModule),
         typeof(AbpStrainerPipeChannelTransferModule))]
     public class AbpStrainerPipeSinkModule : AbpModule
     {

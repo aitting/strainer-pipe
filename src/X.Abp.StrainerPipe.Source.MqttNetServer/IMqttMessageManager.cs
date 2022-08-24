@@ -7,6 +7,5 @@ namespace Abp.StrainerPipe
     {
         Task PutAsync(string topic, string message);
 
-        Task<IEnumerable<MqttMessageDto>> TakeAsync(int count = 1);
     }
 }

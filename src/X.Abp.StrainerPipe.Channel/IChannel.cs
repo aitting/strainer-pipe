@@ -12,7 +12,7 @@ namespace Abp.StrainerPipe
     /// 
     /// </summary>
     /// <typeparam name="T">Metadata数据类型</typeparam>
-    public interface IChannel<T> : IDisposable
+    public interface IChannel<T> : IDisposable where T : notnull
     {
 
         /// <summary>

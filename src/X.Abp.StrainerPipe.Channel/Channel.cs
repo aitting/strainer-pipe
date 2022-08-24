@@ -8,7 +8,7 @@ using Volo.Abp.DependencyInjection;
 
 namespace Abp.StrainerPipe
 {
-    public abstract class Channel<T> : IChannel<T>
+    public abstract class Channel<T> : IChannel<T> where T : notnull
     {
         public abstract void Dispose();
         public abstract Task PutAsync(IMetadata<T> data);

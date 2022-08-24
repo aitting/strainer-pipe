@@ -20,13 +20,13 @@ namespace Abp.StrainerPipe
             AbpLazyServiceProvider = serviceProvider;
         }
 
-        public async Task PutAsync<T>(IMetadata<T> data)
+        public async Task PutAsync<T>(IMetadata<T> data) where T : notnull
         {
             var channel = Selector.Select<T>();
             await channel.PutAsync(data);
         }
 
-        public async Task<IEnumerable<IMetadata<T>>> TakeAsync<T>(int count = 1)
+        public async Task<IEnumerable<IMetadata<T>>> TakeAsync<T>(int count = 1) where T : notnull
         {
             var channel = Selector.Select<T>();
             return await channel.TakeAsync(count);

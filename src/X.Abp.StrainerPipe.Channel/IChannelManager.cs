@@ -15,7 +15,7 @@ namespace Abp.StrainerPipe
         /// <typeparam name="T">data type</typeparam>
         /// <param name="data">data</param>
         /// <returns></returns>
-        Task PutAsync<T>(IMetadata<T> data);
+        Task PutAsync<T>(IMetadata<T> data) where T : notnull;
 
 
 
@@ -26,6 +26,6 @@ namespace Abp.StrainerPipe
         /// <typeparam name="T">data type</typeparam>
         /// <param name="count">获取数量</param>
         /// <returns></returns>
-        Task<IEnumerable<IMetadata<T>>> TakeAsync<T>(int count = 1);
+        Task<IEnumerable<IMetadata<T>>> TakeAsync<T>(int count = 1) where T : notnull;
     }
 }

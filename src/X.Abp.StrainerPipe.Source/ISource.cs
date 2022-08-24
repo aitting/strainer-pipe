@@ -8,11 +8,9 @@ namespace Abp.StrainerPipe
     /// <summary>
     /// 
     /// </summary>
-    public interface ISource : IDisposable
+    public interface ISource
     {
 
-        Task StartAsync();
 
-        Task StopAsync();
     }
 }

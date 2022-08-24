@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Abp.StrainerPipe.Transfer;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,8 @@ namespace Abp.StrainerPipe
 
     public abstract class Source : ISource
     {
+
+        protected IChannelTransfer ChannelTransfer => LazyServiceProvider.LazyGetRequiredService<IChannelTransfer>();
 
         public Source(IAbpLazyServiceProvider abpLazyServiceProvider)
         {
@@ -21,16 +24,7 @@ namespace Abp.StrainerPipe
 
         public IChannelManager ChannelManager => LazyServiceProvider.LazyGetRequiredService<IChannelManager>();
 
-        public abstract void Dispose();
+         
 
-        public abstract Task StartAsync();
-
-        public virtual async Task StopAsync()
-        {
-            await new TaskFactory().StartNew(() =>
-            {
-                Dispose();
-            });
-        }
     }
 }

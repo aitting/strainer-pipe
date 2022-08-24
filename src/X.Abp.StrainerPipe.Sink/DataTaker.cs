@@ -16,7 +16,7 @@ namespace Abp.StrainerPipe
 
         protected IChannelTransfer ChannelTransfer { get; }
 
-        public abstract Task<IEnumerable<IMetadata<object>>> TakeObjectAsync(int count = 1);
+        public abstract Task<IEnumerable<ObjectMetadata>> TakeObjectAsync(int count = 1);
 
 
         public abstract Type DataType { get; }
