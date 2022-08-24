@@ -29,6 +29,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\Abp.StrainerPipe.Core\Abp.StrainerPipe.Core.csproj" />
+	  <ProjectReference Include="..\..\src\X.Abp.StrainerPipe.Core\X.Abp.StrainerPipe.Core.csproj" />
 	</ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Import Project="..\..\common.props" />
 	<PropertyGroup>
@@ -17,8 +17,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\Abp.StrainerPipe.Channel\Abp.StrainerPipe.Channel.csproj" />
-	  <ProjectReference Include="..\Abp.StrainerPipe.TestBase\Abp.StrainerPipe.TestBase.csproj" />
+	  <ProjectReference Include="..\..\src\X.Abp.StrainerPipe.Channel\X.Abp.StrainerPipe.Channel.csproj" />
+	  <ProjectReference Include="..\X.Abp.StrainerPipe.TestBase\X.Abp.StrainerPipe.TestBase.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -3,29 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Channel", "src\Abp.StrainerPipe.Channel\Abp.StrainerPipe.Channel.csproj", "{0F2D2538-1BBD-4950-A629-E5B43FAB03D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.Channel", "src\X.Abp.StrainerPipe.Channel\X.Abp.StrainerPipe.Channel.csproj", "{0F2D2538-1BBD-4950-A629-E5B43FAB03D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Source", "src\Abp.StrainerPipe.Source\Abp.StrainerPipe.Source.csproj", "{5248E62E-F26D-4988-AAD6-EF6D43AF6EDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.Source", "src\X.Abp.StrainerPipe.Source\X.Abp.StrainerPipe.Source.csproj", "{5248E62E-F26D-4988-AAD6-EF6D43AF6EDD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Sink", "src\Abp.StrainerPipe.Sink\Abp.StrainerPipe.Sink.csproj", "{B1046EE1-8349-4B9D-9B95-F78F9E878D44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.Sink", "src\X.Abp.StrainerPipe.Sink\X.Abp.StrainerPipe.Sink.csproj", "{B1046EE1-8349-4B9D-9B95-F78F9E878D44}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Core", "src\Abp.StrainerPipe.Core\Abp.StrainerPipe.Core.csproj", "{149E4B6F-7471-4A48-B1C1-877738536588}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.Core", "src\X.Abp.StrainerPipe.Core\X.Abp.StrainerPipe.Core.csproj", "{149E4B6F-7471-4A48-B1C1-877738536588}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F463F166-4D15-42C4-A8B3-1CA313F0CE66}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{34CD2395-C1BF-4478-830F-5A4CAE9B40FA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Channel.Tests", "test\Abp.StrainerPipe.Channel.Tests\Abp.StrainerPipe.Channel.Tests.csproj", "{4841A976-3879-44CA-B6AA-F9A925B70F1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.Channel.Tests", "test\X.Abp.StrainerPipe.Channel.Tests\X.Abp.StrainerPipe.Channel.Tests.csproj", "{4841A976-3879-44CA-B6AA-F9A925B70F1B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.TestBase", "test\Abp.StrainerPipe.TestBase\Abp.StrainerPipe.TestBase.csproj", "{A3194E7E-B9EA-42FB-A0CA-9634F8031F72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.TestBase", "test\X.Abp.StrainerPipe.TestBase\X.Abp.StrainerPipe.TestBase.csproj", "{A3194E7E-B9EA-42FB-A0CA-9634F8031F72}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Source.MqttNetServer", "src\Abp.StrainerPipe.Source.MqttNetServer\Abp.StrainerPipe.Source.MqttNetServer.csproj", "{02456797-2EAA-4EDE-9488-E262F7C5E80B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.Source.MqttNetServer", "src\X.Abp.StrainerPipe.Source.MqttNetServer\X.Abp.StrainerPipe.Source.MqttNetServer.csproj", "{02456797-2EAA-4EDE-9488-E262F7C5E80B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.StrainerPipe.Channel.Transfer", "src\Abp.StrainerPipe.Channel.Transfer\Abp.StrainerPipe.Channel.Transfer.csproj", "{CE18A1AC-8C7C-4949-BDE0-9A95E6EA8122}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.Channel.Transfer", "src\X.Abp.StrainerPipe.Channel.Transfer\X.Abp.StrainerPipe.Channel.Transfer.csproj", "{CE18A1AC-8C7C-4949-BDE0-9A95E6EA8122}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{AACA915F-B068-41D1-BB95-B8BE1B9EF8DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.StrainerPipe.Source.Host", "host\Abp.StrainerPipe.Source.Host\Abp.StrainerPipe.Source.Host.csproj", "{8043F225-0060-4AE6-82E5-2384F7F8E0FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.Source.Host", "host\X.Abp.StrainerPipe.Source.Host\X.Abp.StrainerPipe.Source.Host.csproj", "{8043F225-0060-4AE6-82E5-2384F7F8E0FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Import Project="..\..\common.props" />
 	<PropertyGroup>
@@ -7,8 +7,13 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>Abp.StrainerPipe</RootNamespace>
 	</PropertyGroup>
+
 	<ItemGroup>
-	  <ProjectReference Include="..\Abp.StrainerPipe.Channel\Abp.StrainerPipe.Channel.csproj" />
+		<PackageReference Include="Volo.Abp.Core" Version="5.3.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\X.Abp.StrainerPipe.Channel.Transfer\X.Abp.StrainerPipe.Channel.Transfer.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -12,12 +12,13 @@ namespace Abp.StrainerPipe
         public NullSink(IAbpLazyServiceProvider lazyServiceProvider) : base(lazyServiceProvider)
         {
         }
+               
 
-        public override async Task ProcessAsync<T>(IMetadata<T> data)
+        public override Task<IMetadata<object>> ProcessAsync(IMetadata<object> data)
         {
             Logger.LogInformation("NullSink Process ...");
             Logger.LogInformation(data.Serialize());
-            await Task.CompletedTask;
+            return Task.FromResult(data);
         }
     }
 }
