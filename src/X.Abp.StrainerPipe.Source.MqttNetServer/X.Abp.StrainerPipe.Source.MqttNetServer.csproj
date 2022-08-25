@@ -7,6 +7,7 @@
 		<Nullable>enable</Nullable>
 		<OutputType>Library</OutputType>
 		<RootNamespace>Abp.StrainerPipe</RootNamespace>
+		<IsPackable>true</IsPackable>
 	</PropertyGroup>
 
 	<ItemGroup>
