@@ -14,10 +14,10 @@
 		<PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
 		<PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
 		<PackageReference Include="coverlet.collector" Version="3.1.2" />
-		<PackageReference Include="Volo.Abp.Authorization" Version="5.3.3" />
-		<PackageReference Include="Volo.Abp.Autofac" Version="5.3.3" />
-		<PackageReference Include="Volo.Abp.BackgroundJobs.Abstractions" Version="5.3.3" />
-		<PackageReference Include="Volo.Abp.TestBase" Version="5.3.3" />
+		<PackageReference Include="Volo.Abp.Authorization" Version="5.3.4" />
+		<PackageReference Include="Volo.Abp.Autofac" Version="5.3.4" />
+		<PackageReference Include="Volo.Abp.BackgroundJobs.Abstractions" Version="5.3.4" />
+		<PackageReference Include="Volo.Abp.TestBase" Version="5.3.4" />
 	</ItemGroup>
 
 	<ItemGroup>
