@@ -24,7 +24,7 @@ namespace Abp.StrainerPipe
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <returns></returns>
-        public IChannel<T> Select<T>()
+        public IChannel<T> Select<T>() where T : notnull
         {
             if (Channels.ContainsKey(typeof(T)))
             {
