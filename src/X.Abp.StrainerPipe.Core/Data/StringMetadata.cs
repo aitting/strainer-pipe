@@ -8,9 +8,9 @@ namespace Abp.StrainerPipe.Data
     {
 
 
-        public StringMetadata(string value) : base(value)
+        public StringMetadata(string value, Guid? tenantId = null) : base(value, tenantId)
         {
-            
+
         }
 
 

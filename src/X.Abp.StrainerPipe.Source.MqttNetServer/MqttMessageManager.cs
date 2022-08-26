@@ -2,6 +2,7 @@
 using Volo.Abp.EventBus;
 using Volo.Abp.EventBus.Local;
 using Volo.Abp.Guids;
+using Volo.Abp.MultiTenancy;
 using Volo.Abp.Threading;
 
 namespace Abp.StrainerPipe
@@ -19,7 +20,9 @@ namespace Abp.StrainerPipe
 
         protected ILocalEventBus EventBus { get; }
 
-        public MqttMessageManager(IGuidGenerator guidGenerator,
+
+        public MqttMessageManager(
+            IGuidGenerator guidGenerator,
             ILocalEventBus eventBus)
         {
             GuidGenerator = guidGenerator;
@@ -35,11 +38,11 @@ namespace Abp.StrainerPipe
             while (_started && !Queue.IsCompleted)
             {
                 var message = Queue.Take();
-                AsyncHelper.RunSync(() => EventBus.PublishAsync(new EventBusSourceData<MqttMessageData>(message)));
+                AsyncHelper.RunSync(() => EventBus.PublishAsync(new EventBusSourceData<MqttMessageData>(message, message.TenantId)));
             }
         }
 
-        public async Task PutAsync(string topic, string message)
+        public async Task PutAsync(string topic, string message, Guid? tenantId = null)
         {
             await new TaskFactory().StartNew(() =>
             {
@@ -48,7 +51,7 @@ namespace Abp.StrainerPipe
                     _started = true;
                     _thread.Start();
                 }
-                Queue.Add(new MqttMessageData(GuidGenerator.Create().ToString("N"), message, topic));
+                Queue.Add(new MqttMessageData(GuidGenerator.Create().ToString("N"), message, topic, tenantId));
             });
         }
 

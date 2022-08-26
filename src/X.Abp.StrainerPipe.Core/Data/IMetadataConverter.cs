@@ -7,6 +7,6 @@ namespace Abp.StrainerPipe.Data
 {
     public interface IMetadataConverter : ITransientDependency
     {
-        IMetadata<T> Convert<T>(T value);
+        IMetadata<T> Convert<T>(T value,Guid? tenantId = null) where T : notnull;
     }
 }

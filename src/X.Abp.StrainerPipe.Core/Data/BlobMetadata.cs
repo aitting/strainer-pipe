@@ -9,7 +9,7 @@ namespace Abp.StrainerPipe.Data
     {
 
         
-        public BlobMetadata(byte[] value):base(value)
+        public BlobMetadata(byte[] value, Guid? tenantId = null) :base(value,tenantId)
         {
              
         }

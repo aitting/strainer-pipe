@@ -45,7 +45,7 @@ namespace X.Abp.StrainerPipe.MqttClient.Services
 
             var options = new MqttClientOptionsBuilder()
                 .WithProtocolVersion(MQTTnet.Formatter.MqttProtocolVersion.V500)
-                .WithUserProperty("__tenant", Guid.NewGuid().ToString())
+                .WithUserProperty("__tenant", "49464a6a-f6e2-0e5f-e21f-3a04e4919153")
                 .WithClientId(Guid.NewGuid().ToString())
                 .WithCommunicationTimeout(TimeSpan.FromMilliseconds(1000 * 59))
                 .WithWebSocketServer("ws://localhost:44354/mqtt")

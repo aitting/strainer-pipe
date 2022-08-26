@@ -6,6 +6,8 @@ namespace Abp.StrainerPipe.Data
 {
     public interface IMetadata<T> where T : notnull
     {
+        Guid? TenantId { get; }
+
         T Value { get; }
 
         string Serialize();

@@ -66,6 +66,8 @@ namespace Abp.StrainerPipe
             return await Task.FromResult(result);
         }
 
+
+        // TODO: 获取数据时 如何取得租户信息
         private IMetadata<T> Dequeue()
         {
             T data;

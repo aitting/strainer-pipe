@@ -5,7 +5,7 @@ namespace Abp.StrainerPipe
 
     public interface IMqttMessageManager : ISingletonDependency, IDisposable
     {
-        Task PutAsync(string topic, string message);
+        Task PutAsync(string topic, string message,Guid? tenantId = null);
 
     }
 }

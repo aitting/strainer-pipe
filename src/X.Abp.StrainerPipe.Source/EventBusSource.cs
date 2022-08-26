@@ -16,7 +16,7 @@ namespace Abp.StrainerPipe
 
         public virtual async Task HandleEventAsync(EventBusSourceData<T> eventData)
         {
-            await ChannelTransfer.PutAsync(new ObjectMetadata(eventData.Data));
+            await ChannelTransfer.PutAsync(new ObjectMetadata(eventData.Data, eventData.TenantId));
         }
     }
 }

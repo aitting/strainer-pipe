@@ -19,14 +19,14 @@ namespace Abp.StrainerPipe.Data
 
         public static StringMetadata ToStringData(this IMetadata<object> metadata)
         {
-            return new StringMetadata(metadata.Serialize());
+            return new StringMetadata(metadata.Serialize(), metadata.TenantId);
         }
 
         public static BlobMetadata ToBlobData(this IMetadata<object> metadata)
         {
             try
             {
-                return new BlobMetadata((byte[])metadata.Value);
+                return new BlobMetadata((byte[])metadata.Value, metadata.TenantId);
             }
             catch (Exception)
             {

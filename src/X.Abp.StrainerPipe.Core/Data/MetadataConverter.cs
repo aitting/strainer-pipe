@@ -15,15 +15,15 @@ namespace Abp.StrainerPipe.Data
         }
 
 
-        public IMetadata<T> Convert<T>(T value)
+        public IMetadata<T> Convert<T>(T value, Guid? tenantId = null) where T : notnull
         {
             if (Options.MetadataTypes.ContainsKey(typeof(T)))
             {
                 var type = Options.MetadataTypes[typeof(T)];
-                return (IMetadata<T>)System.Activator.CreateInstance(type, value);
+                return (IMetadata<T>)System.Activator.CreateInstance(type, value, tenantId);
             }
 
-            return (IMetadata<T>)new StringMetadata(value?.ToString() ?? "");
+            return (IMetadata<T>)new StringMetadata(value?.ToString() ?? "", tenantId);
         }
     }
 }
