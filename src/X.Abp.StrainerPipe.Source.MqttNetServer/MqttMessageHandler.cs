@@ -18,7 +18,7 @@ namespace Abp.StrainerPipe.MqttNetServer
             Logger = NullLogger<MqttMessageHandler>.Instance;
             _mqttMessageManager = mqttMessageManager;
         }
-
+        // TODO: how to get tenantid?
         public virtual async Task HandAsync(MqttApplicationMessageReceivedEventArgs args)
         {
 

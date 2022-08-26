@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Guids;
+using Volo.Abp.MultiTenancy;
 
 namespace Abp.StrainerPipe
 {
@@ -12,6 +13,8 @@ namespace Abp.StrainerPipe
     {
 
         public string Id { get; set; }
+
+        public ICurrentTenant CurrentTenant => LazyServiceProvider.LazyGetRequiredService<ICurrentTenant>();
 
         public ILogger<Sink> Logger => LazyServiceProvider.LazyGetRequiredService<ILogger<Sink>>();
 

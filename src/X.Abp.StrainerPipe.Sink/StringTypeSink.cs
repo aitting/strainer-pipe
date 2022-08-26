@@ -3,11 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.MultiTenancy;
 
 namespace Abp.StrainerPipe
 {
     public abstract class StringTypeSink : Sink, ITypedSink<string>
     {
+
+        
         public StringTypeSink(IAbpLazyServiceProvider lazyServiceProvider) : base(lazyServiceProvider)
         {
         }

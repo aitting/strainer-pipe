@@ -9,7 +9,7 @@ namespace Abp.StrainerPipe
     public class MqttMessageManager : IMqttMessageManager
     {
 
-        protected BlockingCollection<MqttMessageDto> Queue { get; set; }
+        protected BlockingCollection<MqttMessageData> Queue { get; set; }
 
         protected IGuidGenerator GuidGenerator { get; set; }
 
@@ -24,7 +24,7 @@ namespace Abp.StrainerPipe
         {
             GuidGenerator = guidGenerator;
             EventBus = eventBus;
-            Queue = new BlockingCollection<MqttMessageDto>(new ConcurrentQueue<MqttMessageDto>());
+            Queue = new BlockingCollection<MqttMessageData>(new ConcurrentQueue<MqttMessageData>());
 
             _thread = new Thread(Process);
             _thread.IsBackground = true;
@@ -35,7 +35,7 @@ namespace Abp.StrainerPipe
             while (_started && !Queue.IsCompleted)
             {
                 var message = Queue.Take();
-                AsyncHelper.RunSync(() => EventBus.PublishAsync(new EventBusSourceData<MqttMessageDto>(message)));
+                AsyncHelper.RunSync(() => EventBus.PublishAsync(new EventBusSourceData<MqttMessageData>(message)));
             }
         }
 
@@ -48,7 +48,7 @@ namespace Abp.StrainerPipe
                     _started = true;
                     _thread.Start();
                 }
-                Queue.Add(new MqttMessageDto(GuidGenerator.Create().ToString("N"), message, topic));
+                Queue.Add(new MqttMessageData(GuidGenerator.Create().ToString("N"), message, topic));
             });
         }
 

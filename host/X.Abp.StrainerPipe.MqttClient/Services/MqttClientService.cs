@@ -10,6 +10,9 @@ using System.Threading;
 using MQTTnet.Client.Options;
 using MQTTnet;
 using MQTTnet.Client;
+using Volo.Abp.Timing;
+using System.Text.Json.Serialization;
+using Volo.Abp.Json;
 
 namespace X.Abp.StrainerPipe.MqttClient.Services
 {
@@ -22,9 +25,16 @@ namespace X.Abp.StrainerPipe.MqttClient.Services
 
         private bool running = false;
 
-        public MqttClientService()
+        protected IClock Clock { get; set; }
+
+        protected IJsonSerializer JsonSerializer { get; }
+
+        public MqttClientService(IClock clock,
+            IJsonSerializer jsonSerializer)
         {
             Logger = NullLogger<MqttClientService>.Instance;
+            Clock = clock;
+            JsonSerializer = jsonSerializer;
         }
 
 
@@ -38,7 +48,7 @@ namespace X.Abp.StrainerPipe.MqttClient.Services
                 .WithUserProperty("__tenant", Guid.NewGuid().ToString())
                 .WithClientId(Guid.NewGuid().ToString())
                 .WithCommunicationTimeout(TimeSpan.FromMilliseconds(1000 * 59))
-                .WithWebSocketServer("ws://localhost:5169/mqtt")
+                .WithWebSocketServer("ws://localhost:44354/mqtt")
 
                 .Build();
 
@@ -47,11 +57,14 @@ namespace X.Abp.StrainerPipe.MqttClient.Services
             mqttClient.UseDisconnectedHandler(async e =>
             {
                 Logger.LogInformation("### DISCONNECTED FROM SERVER ###");
+                running = false;
                 await Task.Delay(TimeSpan.FromSeconds(5));
 
                 try
                 {
                     await mqttClient.ConnectAsync(options, CancellationToken.None); // Since 3.0.5 with CancellationToken
+                    running = true;
+                    await SendAsync();
                 }
                 catch
                 {
@@ -81,7 +94,11 @@ namespace X.Abp.StrainerPipe.MqttClient.Services
             {
                 await Task.Delay(1000);
                 var r = new Random().Next(1, 10);
-                await _mqttClient.PublishAsync("realtime/data", $"实时数据：{r}");
+
+                var data = new { Name = $"T{r}", Value = r, Time = Clock.Now, Group = "test" };
+                var message = JsonSerializer.Serialize(data);
+
+                await _mqttClient.PublishAsync("realtime/test", message);
                 Logger.LogInformation($"实时数据：{r}");
             }
         }

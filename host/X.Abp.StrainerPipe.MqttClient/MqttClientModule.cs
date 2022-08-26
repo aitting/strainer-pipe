@@ -5,12 +5,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Volo.Abp;
 using Volo.Abp.Autofac;
+using Volo.Abp.Json;
 using Volo.Abp.Modularity;
+using Volo.Abp.Timing;
 
 namespace X.Abp.StrainerPipe.MqttClient;
 
 [DependsOn(
-    typeof(AbpAutofacModule)
+    typeof(AbpAutofacModule),
+    typeof(AbpTimingModule),
+    typeof(AbpJsonModule)
 )]
 public class MqttClientModule : AbpModule
 {
