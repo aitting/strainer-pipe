@@ -7,11 +7,11 @@ namespace Abp.StrainerPipe
 {
 
 
-    public interface ISinkManager : ISingletonDependency, IDisposable
+    public interface ISinkManager : ITransientDependency, IDisposable
     {
 
         
-        Task StartSinkAsync();
+        Task StartSinkAsync(Guid? tenantId = null);
 
     }
 }

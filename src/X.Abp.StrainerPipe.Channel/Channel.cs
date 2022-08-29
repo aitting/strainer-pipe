@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.MultiTenancy;
 
 namespace Abp.StrainerPipe
 {
@@ -15,6 +16,8 @@ namespace Abp.StrainerPipe
         public abstract Task<IEnumerable<IMetadata<T>>> TakeAsync(int count = 1);
 
         public IAbpLazyServiceProvider LazyServiceProvider { get; set; }
+
+        protected ICurrentTenant CurrentTenant => LazyServiceProvider.LazyGetRequiredService<ICurrentTenant>();
 
         protected ChannelOptions Options { get; set; }
 

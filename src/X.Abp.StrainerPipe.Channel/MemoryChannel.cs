@@ -1,6 +1,7 @@
 ﻿using Abp.StrainerPipe.Data;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,8 @@ namespace Abp.StrainerPipe
     /// <typeparam name="T">数据类型</typeparam>
     public class MemoryChannel<T> : Channel<T> where T : notnull
     {
-        protected ConcurrentQueue<T> Queue { get; set; }
+
+        protected Dictionary<string, ConcurrentQueue<T>> Queues { get; set; }
 
         protected IMetadataConverter MetadataConverter { get; }
 
@@ -24,7 +26,8 @@ namespace Abp.StrainerPipe
             IOptions<ChannelOptions> options,
             IMetadataConverter metadataConverter) : base(options, abpLazyServiceProvider)
         {
-            Queue = new ConcurrentQueue<T>();
+
+            Queues = new Dictionary<string, ConcurrentQueue<T>>();
             MetadataConverter = metadataConverter;
         }
 
@@ -33,14 +36,32 @@ namespace Abp.StrainerPipe
 
         }
 
+        private ConcurrentQueue<T> GetQueue()
+        {
+
+            string dicKey = "host";
+            if (CurrentTenant.Id.HasValue)
+            {
+                dicKey = CurrentTenant.Id.Value.ToString("N");
+            }
+
+            if (!Queues.ContainsKey(dicKey))
+            {
+                Queues.Add(dicKey, new ConcurrentQueue<T>());
+            }
+
+            return Queues[dicKey];
+        }
+
         public override async Task PutAsync(IMetadata<T> data)
         {
+            var queue = GetQueue();
             await new TaskFactory().StartNew(() =>
             {
-                Queue.Enqueue(data.Value);
-                if (Queue.Count > Options.MaxChannelItemCount)
+                queue.Enqueue(data.Value);
+                if (queue.Count > Options.MaxChannelItemCount)
                 {
-                    TryDequeueMany(Queue.Count - Options.MaxChannelItemCount);
+                    TryDequeueMany(queue.Count - Options.MaxChannelItemCount);
                 }
             });
         }
@@ -70,8 +91,9 @@ namespace Abp.StrainerPipe
         // TODO: 获取数据时 如何取得租户信息
         private IMetadata<T> Dequeue()
         {
+            var queue = GetQueue();
             T data;
-            if (Queue.TryDequeue(out data))
+            if (queue.TryDequeue(out data))
             {
                 return MetadataConverter.Convert(data);
             }
@@ -81,8 +103,9 @@ namespace Abp.StrainerPipe
 
         private bool TryDequeue()
         {
+            var queue = GetQueue();
             T data;
-            return Queue.TryDequeue(out data);
+            return queue.TryDequeue(out data);
         }
 
         private void TryDequeueMany(int count = 1)

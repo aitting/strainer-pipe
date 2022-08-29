@@ -29,6 +29,8 @@ namespace X.Abp.StrainerPipe.MqttClient.Services
 
         protected IJsonSerializer JsonSerializer { get; }
 
+        protected const string TenantId = "49464a6a-f6e2-0e5f-e21f-3a04e4919153";
+
         public MqttClientService(IClock clock,
             IJsonSerializer jsonSerializer)
         {
@@ -45,10 +47,11 @@ namespace X.Abp.StrainerPipe.MqttClient.Services
 
             var options = new MqttClientOptionsBuilder()
                 .WithProtocolVersion(MQTTnet.Formatter.MqttProtocolVersion.V500)
-                .WithUserProperty("__tenant", "49464a6a-f6e2-0e5f-e21f-3a04e4919153")
+                .WithUserProperty("__tenant", TenantId)
                 .WithClientId(Guid.NewGuid().ToString())
                 .WithCommunicationTimeout(TimeSpan.FromMilliseconds(1000 * 59))
-                .WithWebSocketServer("ws://localhost:44354/mqtt")
+                //.WithWebSocketServer("ws://localhost:44354/mqtt")
+                .WithWebSocketServer("ws://localhost:5169/mqtt")
 
                 .Build();
 
@@ -98,9 +101,18 @@ namespace X.Abp.StrainerPipe.MqttClient.Services
                 var data = new { Name = $"T{r}", Value = r, Time = Clock.Now, Group = "test" };
                 var message = JsonSerializer.Serialize(data);
 
-                await _mqttClient.PublishAsync("realtime/test", message);
+                await _mqttClient.PublishAsync(BuildMessage("realtime/test", message));
                 Logger.LogInformation($"实时数据：{r}");
             }
+        }
+
+        private MqttApplicationMessage BuildMessage(string topic, string payload)
+        {
+            return new MqttApplicationMessageBuilder()
+                    .WithUserProperty("__tenant", TenantId)
+                    .WithTopic(topic)
+                    .WithPayload(payload)
+                    .Build();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Abp.StrainerPipe.MqttNetServer
         {
             using (CurrentTenant.Change(eventData.Data.TenantId))
             {
-                await ChannelTransfer.PutAsync(new BlobMetadata(eventData.Data.GetBytes()));
+                await ChannelTransfer.PutAsync(new BlobMetadata(eventData.Data.GetBytes(), eventData.Data.TenantId));
             }
         }
     }

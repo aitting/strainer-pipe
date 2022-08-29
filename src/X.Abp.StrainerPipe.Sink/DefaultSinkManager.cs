@@ -9,12 +9,14 @@ using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.ExceptionHandling;
+using Volo.Abp.MultiTenancy;
 using Volo.Abp.Threading;
 
 namespace Abp.StrainerPipe
 {
     public class DefaultSinkManager : ISinkManager
     {
+
 
         public SinkOptions Options { get; private set; }
 
@@ -30,12 +32,16 @@ namespace Abp.StrainerPipe
 
         protected ILogger Logger => LazyServiceProvider.LazyGetService<ILogger>(provider => LoggerFactory?.CreateLogger(GetType().FullName) ?? NullLogger.Instance);
 
+        protected ICurrentTenant CurrentTenant => LazyServiceProvider.LazyGetRequiredService<ICurrentTenant>();
+
         public IAbpLazyServiceProvider LazyServiceProvider { get; set; }
 
         protected AbpAsyncTimer Timer { get; private set; }
 
-
+        protected Guid? TenantId { get; set; } = null;
         protected int SingleTakeCount { get; set; } = 1000;
+
+        protected bool Started { get; set; } = false;
 
         public DefaultSinkManager(
             IServiceProvider serviceProvider,
@@ -65,9 +71,14 @@ namespace Abp.StrainerPipe
             Timer?.Stop();
         }
 
-        public async Task StartSinkAsync()
+        public async Task StartSinkAsync(Guid? tenantId = null)
         {
-            await new TaskFactory().StartNew(() => Timer.Start());
+            TenantId = tenantId;
+            if (!Started)
+            {
+                await new TaskFactory().StartNew(() => Timer.Start());
+                Started = true;
+            }
         }
 
         private async Task RunAsync(AbpAsyncTimer timer)
@@ -84,13 +95,17 @@ namespace Abp.StrainerPipe
                         return;
                     }
 
-                    foreach (var dataTaker in DataTakers)
+                    using (CurrentTenant.Change(TenantId))
                     {
-                        var data = await dataTaker.TakeObjectAsync(SingleTakeCount);
-
-                        foreach (var item in data)
+                        foreach (var dataTaker in DataTakers)
                         {
-                            await sinkRunner.StartAsync(Sinks, item);
+
+                            var data = await dataTaker.TakeObjectAsync(SingleTakeCount);
+
+                            foreach (var item in data)
+                            {
+                                await sinkRunner.StartAsync(Sinks, item);
+                            }
                         }
                     }
                 }

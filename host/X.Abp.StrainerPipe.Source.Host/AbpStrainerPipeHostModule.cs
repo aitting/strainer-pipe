@@ -106,6 +106,7 @@ namespace X.Abp.StrainerPipe.Source.Host
             app.UseAuthentication();
             app.UseJwtTokenMiddleware();
 
+            app.UseMultiTenancy();
 
             app.UseUnitOfWork();
             app.UseAuthorization();
@@ -128,7 +129,9 @@ namespace X.Abp.StrainerPipe.Source.Host
 
         public override void OnPostApplicationInitialization(ApplicationInitializationContext context)
         {
-            AsyncHelper.RunSync(() => context.ServiceProvider.GetRequiredService<ISinkManager>().StartSinkAsync());
+
+            Guid tenantId = new Guid("49464a6a-f6e2-0e5f-e21f-3a04e4919153");
+            AsyncHelper.RunSync(() => context.ServiceProvider.GetRequiredService<ISinkManagerFactory>().CreateAndStartAsync(tenantId));
         }
     }
 }
