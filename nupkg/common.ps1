@@ -14,5 +14,6 @@ $projects = (
     "src/X.Abp.StrainerPipe.Channel.Transfer",
     "src/X.Abp.StrainerPipe.Sink",
     "src/X.Abp.StrainerPipe.Source",
+    "src/X.Abp.StrainerPipe.Source.Contracts",
     "src/X.Abp.StrainerPipe.Source.MqttNetServer"
 )
