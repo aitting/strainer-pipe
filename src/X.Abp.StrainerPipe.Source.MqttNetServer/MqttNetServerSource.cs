@@ -7,7 +7,7 @@ using Volo.Abp.Threading;
 
 namespace Abp.StrainerPipe.MqttNetServer
 {
-    public class MqttNetServerSource : EventBusSource<MqttMessageData>, ITransientDependency
+    public class MqttNetServerSource : LocalEventBusSource<MqttMessageData>, ITransientDependency
     {
         public ICurrentTenant CurrentTenant => LazyServiceProvider.LazyGetRequiredService<ICurrentTenant>();
 

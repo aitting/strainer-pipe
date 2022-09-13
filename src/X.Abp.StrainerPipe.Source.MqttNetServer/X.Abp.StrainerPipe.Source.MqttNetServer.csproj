@@ -11,13 +11,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!--<PackageReference Include="Hd.Mqtt" Version="4.4.1" />-->
+		<PackageReference Include="Hd.Mqtt" Version="4.4.1" />
 		
 		<PackageReference Include="Volo.Abp.Guids" Version="5.3.4" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\abp-mqtt-net-master\src\Hd.Mqtt\Hd.Mqtt.csproj" />
 	  <ProjectReference Include="..\X.Abp.StrainerPipe.Source\X.Abp.StrainerPipe.Source.csproj" />
 	</ItemGroup>
 

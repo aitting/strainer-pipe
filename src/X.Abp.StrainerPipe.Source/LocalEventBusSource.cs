@@ -8,9 +8,9 @@ using Volo.Abp.EventBus;
 
 namespace Abp.StrainerPipe
 {
-    public abstract class EventBusSource<T> : Source, ILocalEventHandler<EventBusSourceData<T>>, ITransientDependency where T : class
+    public abstract class LocalEventBusSource<T> : Source, ILocalEventHandler<EventBusSourceData<T>>, ITransientDependency where T : class
     {
-        protected EventBusSource(IAbpLazyServiceProvider abpLazyServiceProvider) : base(abpLazyServiceProvider)
+        protected LocalEventBusSource(IAbpLazyServiceProvider abpLazyServiceProvider) : base(abpLazyServiceProvider)
         {
         }
 
