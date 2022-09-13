@@ -6,6 +6,7 @@ namespace Abp.StrainerPipe
 {
 
     [DependsOn(
+        typeof(AbpStrainerPipeSourceContractsModule),
         typeof(AbpEventBusModule),
         typeof(AbpStrainerPipeChannelTransferModule)
         )]
