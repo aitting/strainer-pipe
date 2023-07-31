@@ -18,6 +18,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\src\X.Abp.StrainerPipe.Channel\X.Abp.StrainerPipe.Channel.csproj" />
+	  <ProjectReference Include="..\..\src\X.Abp.StrainerPipe.Sink\X.Abp.StrainerPipe.Sink.csproj" />
 	  <ProjectReference Include="..\X.Abp.StrainerPipe.TestBase\X.Abp.StrainerPipe.TestBase.csproj" />
 	</ItemGroup>
 

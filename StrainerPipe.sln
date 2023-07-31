@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.Host", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.MqttClient", "host\X.Abp.StrainerPipe.MqttClient\X.Abp.StrainerPipe.MqttClient.csproj", "{486A0529-C0BA-479E-8C83-D442C27831D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "X.Abp.StrainerPipe.Source.Contracts", "src\X.Abp.StrainerPipe.Source.Contracts\X.Abp.StrainerPipe.Source.Contracts.csproj", "{89CBB763-449A-4AB6-A5D1-8685FCDEBE6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Abp.StrainerPipe.Source.Contracts", "src\X.Abp.StrainerPipe.Source.Contracts\X.Abp.StrainerPipe.Source.Contracts.csproj", "{89CBB763-449A-4AB6-A5D1-8685FCDEBE6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "X.Abp.StrainerPipe.Sink.Abstractions", "src\X.Abp.StrainerPipe.Sink.Abstractions\X.Abp.StrainerPipe.Sink.Abstractions.csproj", "{1C029DB6-7DAE-4EAE-8347-83A253847674}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{89CBB763-449A-4AB6-A5D1-8685FCDEBE6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89CBB763-449A-4AB6-A5D1-8685FCDEBE6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89CBB763-449A-4AB6-A5D1-8685FCDEBE6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C029DB6-7DAE-4EAE-8347-83A253847674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C029DB6-7DAE-4EAE-8347-83A253847674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C029DB6-7DAE-4EAE-8347-83A253847674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C029DB6-7DAE-4EAE-8347-83A253847674}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{8043F225-0060-4AE6-82E5-2384F7F8E0FA} = {AACA915F-B068-41D1-BB95-B8BE1B9EF8DD}
 		{486A0529-C0BA-479E-8C83-D442C27831D6} = {AACA915F-B068-41D1-BB95-B8BE1B9EF8DD}
 		{89CBB763-449A-4AB6-A5D1-8685FCDEBE6C} = {34CD2395-C1BF-4478-830F-5A4CAE9B40FA}
+		{1C029DB6-7DAE-4EAE-8347-83A253847674} = {34CD2395-C1BF-4478-830F-5A4CAE9B40FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE8755CC-FB81-48E1-A5DB-6EFF83CAFC99}

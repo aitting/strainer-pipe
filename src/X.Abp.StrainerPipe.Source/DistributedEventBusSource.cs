@@ -7,7 +7,7 @@ using Volo.Abp.EventBus.Distributed;
 
 namespace Abp.StrainerPipe
 {
-    public abstract class DistributedEventBusSource<T> : Source, IDistributedEventHandler<EventBusSourceData<T>>, ITransientDependency where T : class
+    public abstract class DistributedEventBusSource<T> : Source<T>, IDistributedEventHandler<EventBusSourceData<T>>, ITransientDependency where T : class
     {
         protected DistributedEventBusSource(IAbpLazyServiceProvider abpLazyServiceProvider) : base(abpLazyServiceProvider)
         {
@@ -15,7 +15,8 @@ namespace Abp.StrainerPipe
 
         public async Task HandleEventAsync(EventBusSourceData<T> eventData)
         {
-            await ChannelTransfer.PutAsync(new ObjectMetadata(eventData.Data, eventData.TenantId));
+            await BeaforeSink(eventData.TenantId);
+            await HandleAsync(eventData.Data, eventData.TenantId);
         }
     }
 }

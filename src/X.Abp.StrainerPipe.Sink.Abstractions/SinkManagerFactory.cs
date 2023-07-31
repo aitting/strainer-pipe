@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Volo.Abp.DependencyInjection;
+using System.Threading.Tasks;
 
 namespace Abp.StrainerPipe
 {

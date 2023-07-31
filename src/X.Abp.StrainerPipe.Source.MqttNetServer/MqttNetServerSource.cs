@@ -1,5 +1,6 @@
 ﻿using Abp.StrainerPipe.Data;
 using Abp.StrainerPipe.Transfer;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EventBus;
 using Volo.Abp.MultiTenancy;
@@ -17,13 +18,9 @@ namespace Abp.StrainerPipe.MqttNetServer
 
         }
 
-
-        public override async Task HandleEventAsync(EventBusSourceData<MqttMessageData> eventData)
+        public override async Task HandleAsync(MqttMessageData data, Guid? tenantId = null)
         {
-            using (CurrentTenant.Change(eventData.Data.TenantId))
-            {
-                await ChannelTransfer.PutAsync(new BlobMetadata(eventData.Data.GetBytes(), eventData.Data.TenantId));
-            }
+            await ChannelTransfer.PutAsync(new BlobMetadata(data.GetBytes(), data.TenantId));
         }
     }
 }

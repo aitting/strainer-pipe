@@ -126,12 +126,5 @@ namespace X.Abp.StrainerPipe.Source.Host
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();
         }
-
-        public override void OnPostApplicationInitialization(ApplicationInitializationContext context)
-        {
-
-            Guid tenantId = new Guid("49464a6a-f6e2-0e5f-e21f-3a04e4919153");
-            AsyncHelper.RunSync(() => context.ServiceProvider.GetRequiredService<ISinkManagerFactory>().CreateAndStartAsync(tenantId));
-        }
     }
 }

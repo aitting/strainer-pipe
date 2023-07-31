@@ -61,7 +61,7 @@ namespace Abp.StrainerPipe
 
             _dataTakers = new Lazy<List<DataTaker>>(() => Options.DataTakers.Select(x => (DataTaker)serviceProvider.GetService(x)).ToList(), true);
 
-            timer.Period = 1000 * 10;
+            timer.Period = 1000 * 3;
             timer.Elapsed = RunAsync;
             Timer = timer;
         }
@@ -104,6 +104,7 @@ namespace Abp.StrainerPipe
 
                             foreach (var item in data)
                             {
+                                Logger.LogDebug(item.Value?.ToString());
                                 await sinkRunner.StartAsync(Sinks, item);
                             }
                         }

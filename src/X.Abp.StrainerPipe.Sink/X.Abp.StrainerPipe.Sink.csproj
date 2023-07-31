@@ -15,6 +15,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\X.Abp.StrainerPipe.Channel.Transfer\X.Abp.StrainerPipe.Channel.Transfer.csproj" />
+	  <ProjectReference Include="..\X.Abp.StrainerPipe.Sink.Abstractions\X.Abp.StrainerPipe.Sink.Abstractions.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -7,11 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.DependencyInjection;
 using Xunit;
 
 namespace Abp.StrainerPipe.Channel.Tests
 {
-
+    
 
     public class ChannelManagerTests : AbpStrainerPipeChannelTestBase
     {
@@ -49,10 +50,12 @@ namespace Abp.StrainerPipe.Channel.Tests
             var data1 = System.Text.Encoding.UTF8.GetBytes("我是一条数据:1");
             var data2 = System.Text.Encoding.UTF8.GetBytes("我是一条数据:2");
             var data3 = System.Text.Encoding.UTF8.GetBytes("我是一条数据:3");
+            var data4 = System.Text.Encoding.UTF8.GetBytes("我是一条数据:4");
 
             await _channelManager.PutAsync(new BlobMetadata(data1));
             await _channelManager.PutAsync(new BlobMetadata(data2));
             await _channelManager.PutAsync(new BlobMetadata(data3));
+            await _channelManager.PutAsync(new BlobMetadata(data4));
 
             var byteDataList = await _channelManager.TakeAsync<byte[]>(3);
 
@@ -60,6 +63,8 @@ namespace Abp.StrainerPipe.Channel.Tests
 
             byteDataList.First().Serialize().ShouldBe("我是一条数据:1");
             byteDataList.Last().Serialize().ShouldBe("我是一条数据:3");
+
+
         }
     }
 }

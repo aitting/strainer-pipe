@@ -21,6 +21,8 @@ namespace Abp.StrainerPipe
 
         protected IMetadataConverter MetadataConverter { get; }
 
+        private readonly object _lock = new object();
+
         public MemoryChannel(
             IAbpLazyServiceProvider abpLazyServiceProvider,
             IOptions<ChannelOptions> options,
@@ -36,11 +38,15 @@ namespace Abp.StrainerPipe
 
         }
 
-        private ConcurrentQueue<T> GetQueue()
+        private ConcurrentQueue<T> GetQueue(Guid? tenantId = null)
         {
 
             string dicKey = "host";
-            if (CurrentTenant.Id.HasValue)
+            if (tenantId.HasValue)
+            {
+                dicKey = tenantId.Value.ToString("N");
+            }
+            else if (CurrentTenant.Id.HasValue)
             {
                 dicKey = CurrentTenant.Id.Value.ToString("N");
             }
@@ -55,7 +61,7 @@ namespace Abp.StrainerPipe
 
         public override async Task PutAsync(IMetadata<T> data)
         {
-            var queue = GetQueue();
+            var queue = GetQueue(data.TenantId);
             await new TaskFactory().StartNew(() =>
             {
                 queue.Enqueue(data.Value);
@@ -88,16 +94,18 @@ namespace Abp.StrainerPipe
         }
 
 
-        // TODO: 获取数据时 如何取得租户信息
+
         private IMetadata<T> Dequeue()
         {
-            var queue = GetQueue();
-            T data;
-            if (queue.TryDequeue(out data))
+            lock (_lock)
             {
-                return MetadataConverter.Convert(data);
+                var queue = GetQueue();
+                T data;
+                if (queue.TryDequeue(out data))
+                {
+                    return MetadataConverter.Convert(data, CurrentTenant.Id);
+                }
             }
-
             throw new Exception("Queue is empty");
         }
 

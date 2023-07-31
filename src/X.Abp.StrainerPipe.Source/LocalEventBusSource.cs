@@ -1,5 +1,6 @@
 ﻿using Abp.StrainerPipe.Data;
 using Abp.StrainerPipe.Transfer;
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,15 +9,16 @@ using Volo.Abp.EventBus;
 
 namespace Abp.StrainerPipe
 {
-    public abstract class LocalEventBusSource<T> : Source, ILocalEventHandler<EventBusSourceData<T>>, ITransientDependency where T : class
+    public abstract class LocalEventBusSource<T> : Source<T>, ILocalEventHandler<EventBusSourceData<T>>, ITransientDependency where T : class
     {
         protected LocalEventBusSource(IAbpLazyServiceProvider abpLazyServiceProvider) : base(abpLazyServiceProvider)
         {
         }
 
-        public virtual async Task HandleEventAsync(EventBusSourceData<T> eventData)
+        public async Task HandleEventAsync(EventBusSourceData<T> eventData)
         {
-            await ChannelTransfer.PutAsync(new ObjectMetadata(eventData.Data, eventData.TenantId));
+            await BeaforeSink(eventData.TenantId);
+            await HandleAsync(eventData.Data, eventData.TenantId);
         }
     }
 }

@@ -39,6 +39,7 @@ namespace Abp.StrainerPipe
             {
                 var message = Queue.Take();
                 AsyncHelper.RunSync(() => EventBus.PublishAsync(new EventBusSourceData<MqttMessageData>(message, message.TenantId)));
+                Thread.Sleep(100);
             }
         }
 
